@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import os
 import tweepy
 import datetime
+from marketBotHelper import *
 load_dotenv()
 
 # Loads the API keys from .env file
@@ -20,13 +21,17 @@ api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 # Function to post daily start price
 def postStartStock():
-    print("Hello")
+    print("hi")
 
 def postEndStock():
     print("Hello")
 
-try:
-    api.verify_credentials()
-    print("Working")
-except:
-    print("Not Working")
+print(getCurrentDate())
+print(getCurrentTime())
+
+
+# try:
+#     api.verify_credentials()
+#     print("Working")
+# except:
+#     print("Not Working")

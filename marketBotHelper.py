@@ -23,3 +23,13 @@ def getStringWeekday():
 def isWeekday():
     return datetime.datetime.today().weekday() in range(0,5)
 
+# Returns string of current time
+def getCurrentTime():
+    return datetime.datetime.now().strftime("%I:%M%p")
+
+# Returns string of current date
+def getCurrentDate():
+    return datetime.date.today().strftime("%B %d, %Y")
+
+
+
