@@ -21,17 +21,20 @@ api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
 # Function to post daily start price
 def postStartStock():
-    print("hi")
+    time = getCurrentTime()
+    date = getCurrentDate()
+    weekday = getStringWeekday()
+    api.update_status("Hi, its " + time + " on " + weekday + ", " + date)
 
+# Function to post daily end price
 def postEndStock():
-    print("Hello")
+    time = getCurrentTime()
+    date = getCurrentDate()
+    weekday = getStringWeekday()
+    api.update_status("Hi, its " + time + " on " + weekday + ", " + date)
 
-print(getCurrentDate())
-print(getCurrentTime())
-
-
-# try:
-#     api.verify_credentials()
-#     print("Working")
-# except:
-#     print("Not Working")
+# Checks what time it is and runs appropate method
+if ((datetime.datetime.now().hour < 12) and isWeekday()):
+    postStartStock()
+elif ((datetime.datetime.now().hour > 14) and isWeekday()):
+    postEndStock()

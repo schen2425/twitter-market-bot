@@ -25,11 +25,8 @@ def isWeekday():
 
 # Returns string of current time
 def getCurrentTime():
-    return datetime.datetime.now().strftime("%I:%M%p")
+    return datetime.datetime.now().strftime("%I:%M%p EST")
 
 # Returns string of current date
 def getCurrentDate():
     return datetime.date.today().strftime("%B %d, %Y")
-
-
-
