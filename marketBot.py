@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import os
 import tweepy
 import datetime
-from marketBotHelper import *
+from marketBotHelper import postStartStock, postEndStock, postTime, isWeekday
 import finnhub
 load_dotenv()
 
@@ -30,24 +30,20 @@ configuration = finnhub.Configuration(
 finnhub_client = finnhub.DefaultApi(finnhub.ApiClient(configuration))
 
 # List of stocks to track
-trackedStocks = ["SPY", "DIA", "QQQ"]
+trackedStocks = ["DIA", "SPY", "QQQ"]
 
 # Function to post daily start price
-def postStartStock():
-    time = getCurrentTime()
-    date = getCurrentDate()
-    weekday = getStringWeekday()
-    twitterApi.update_status("Hi, its " + time + " on " + weekday + ", " + date)
+def openPost():
+    postTime(twitterApi)
+    postStartStock(twitterApi, finnhub_client, trackedStocks)
 
 # Function to post daily end price
-def postEndStock():
-    time = getCurrentTime()
-    date = getCurrentDate()
-    weekday = getStringWeekday()
-    twitterApi.update_status("Hi, its " + time + " on " + weekday + ", " + date)
+def closePost():
+    postTime(twitterApi)
+    postEndStock(twitterApi, finnhub_client, trackedStocks)
 
 # Checks what time it is and runs appropate method
 if ((datetime.datetime.now().hour < 12) and isWeekday()):
-    postStartStock()
+    openPost()
 elif ((datetime.datetime.now().hour > 14) and isWeekday()):
-    postEndStock()
+    closePost()
