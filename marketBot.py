@@ -5,9 +5,9 @@ import tweepy
 import datetime
 from marketBotHelper import postStartStock, postEndStock, postTime, isWeekday
 import finnhub
-load_dotenv()
 
 # Loads the API keys from .env file
+load_dotenv()
 API_KEY = os.getenv('API_KEY')
 API_KEY_SECRET = os.getenv('API_KEY_SECRET')
 ACCESS_TOKEN = os.getenv('ACCESS_TOKEN')

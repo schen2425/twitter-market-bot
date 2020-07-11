@@ -1,8 +1,12 @@
 # twitter-market-bot
 A Twitter bot giving updates about the stock market
+Posts can be found at https://twitter.com/DailyMarketFact
 
 # Setup
-Make sure dependencies are installed
+Make sure dependencies are installed from the requirements.txt file
+
+Create a twitter account and get Dev account/app with API keys
+Create a Finnhub account and get an API Key
 
 Create a .env file in the root directory of this project
 ```
