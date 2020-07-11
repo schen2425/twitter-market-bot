@@ -30,3 +30,8 @@ def getCurrentTime():
 # Returns string of current date
 def getCurrentDate():
     return datetime.date.today().strftime("%B %d, %Y")
+
+# Returns the stock information
+def getStock(client, stock):
+    return client.quote(stock)
+
